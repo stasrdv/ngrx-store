@@ -3,8 +3,22 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'ngrx-store';
+  updatedAt: number | undefined;
+
+  clear() {}
+
+  increase() {
+    this.setDate();
+  }
+
+  decrease() {
+    this.setDate();
+  }
+
+  private setDate(): void {
+    this.updatedAt = Date.now();
+  }
 }
