@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { map } from 'rxjs';
 import { clear, counterSelector, decrease, increase } from './reducers/counter';
 
 @Component({
@@ -10,6 +11,7 @@ import { clear, counterSelector, decrease, increase } from './reducers/counter';
 export class AppComponent {
   updatedAt: number | undefined;
   count$ = this.store.select(counterSelector);
+  isDecreaseDisabled = this.count$.pipe(map((count) => count <= 0));
 
   constructor(private store: Store) {}
 

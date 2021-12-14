@@ -3,6 +3,9 @@
   text-align: center;
   button {
     margin-right: 5px;
+    &:disabled{
+     cursor: not-allowed;
+    }
   }
 }
 .content {
