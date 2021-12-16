@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { createEffects } from '@ngrx/effects/src/effects_module';
+
 import { map } from 'rxjs';
 import {
-  clear,
-  increase,
-  decrease,
+  increaseCounter,
+  decreaseCounter,
+  clearCounter,
   changeUpdateTime,
-} from './reducers/counter';
+} from './state/counter.actions';
 
 @Injectable()
 export class AppEffects {
@@ -16,7 +16,7 @@ export class AppEffects {
   updatedAt$ = createEffect(
     () =>
       this.actions.pipe(
-        ofType(increase, decrease, clear),
+        ofType(increaseCounter, decreaseCounter, clearCounter),
         map(() => changeUpdateTime({ updatedAt: Date.now() }))
       ),
     { dispatch: true }

@@ -1,13 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { map } from 'rxjs';
-import {
-  clear,
-  counterSelector,
-  decrease,
-  increase,
-  updatedAtSelector,
-} from './reducers/counter';
+import { clearCounter, decreaseCounter, increaseCounter } from './state/counter.actions';
+import { counterSelector, updatedAtSelector } from './state/counter.selectors';
 
 @Component({
   selector: 'app-root',
@@ -23,14 +18,14 @@ export class AppComponent {
   constructor(private store: Store,) {}
 
   clear() {
-    this.store.dispatch(clear());
+    this.store.dispatch(clearCounter());
   }
 
   increase() {
-    this.store.dispatch(increase());
+    this.store.dispatch(increaseCounter());
   }
 
   decrease() {
-    this.store.dispatch(decrease());
+    this.store.dispatch(decreaseCounter());
   }
 }
