@@ -3,11 +3,11 @@
   <button (click)="decrease()" [disabled]="isDecreaseDisabled | async">
     Decrease
   </button>
-  <button (click)="clear()">Clear</button>
+  <button (click)="clear()" [disabled]="isDecreaseDisabled | async">Clear</button>
 
   <div class="content">
     <p>The count is {{ count$ | async }}</p>
-    <p *ngIf="updatedAt">Updated at {{ updatedAt | date: "h:mm:ss a" }}</p>
+    <p *ngIf="updatedAt$ | async">Updated at {{ (updatedAt$ | async) | date: "h:mm:ss a" }}</p>
   </div>
 </div>
 <router-outlet></router-outlet>
